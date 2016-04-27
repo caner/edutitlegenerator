@@ -83,11 +83,238 @@ işte bu araç güzel bir araştırmanın ürünü. artık yorulmayın ve siz de
         </div>
         <div class="row" id="footer">
           <div class="col-xs-12 col-sm-12 col-md-12">
-          <p>aslında böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a>'dan gördüm. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. </p>
+          <p>böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a> yapmıştı. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. bir de isimlere hal eklerini otomatik ekleten <a href="http://sercaneraslan.com/haller.js/">hallerjs</a> için <a href="https://twitter.com/sercan_eraslan">sercan eraslan</a>'a çok teşekkürler.</p>
         </div>
         </div>
-        <script src="https://raw.githubusercontent.com/caner/edutitlegenerator/gh-pages/titlegenerator.js" type="text/javascript"></script>
-        <script src="https://raw.githubusercontent.com/caner/edutitlegenerator/gh-pages/haller.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        var level = [
+            "kıdemli",
+            "yeni nesil",
+            "adobe certified",
+            "google certified",
+            "uzman",
+            "koordinatör",
+            "okul müdürü"
+        ];
+        var levelEng = [
+            "newbie",
+            "new generation",
+            "intern",
+            "junior",
+            "senior",
+            "lead"
+        ];
+        var prefix = [
+            "STEM",
+            "STEAM",
+            "FeTeMM",
+            "bilişim",
+            "yapılandırmacı",
+            "çok yönlü zeka",
+            "maker",
+            "robotic",
+            "arduino",
+            "raspberry pi",
+            "maker",
+            "eğitimde teknoloji",
+            "ICT",
+            "BÖTE",
+            "sosyal medya",
+            "scratch",
+            "21YY",
+            "IoT",
+            "MEB'de öğretmen",
+            "kodlama",
+            "#1:1",
+
+        ];
+        var prefixEng = [
+            "project",
+            "ninja",
+                "college",
+            "dojo",
+            "curriculum",
+            "instructional",
+            "computer science",
+            "gamification",
+            "3d print",
+            "preschool",
+            "highschool"
+        ];
+        var role = [
+            "öğretmen",
+            "eğitmen",
+            "koç",
+            "teknolog",
+        ];
+        var roleEng = [
+            "instructor",
+            "developer",
+            "manager",
+            "designer",
+            "educator",
+            "trainer",
+            "coordinator",
+            "specialist"
+        ];
+        var hashtags = [
+            "edtech",
+            "edu",
+            "egt",
+            "maker",
+            "makers",
+            "3dprint",
+            "sertifika",
+            "FLL",
+            "ninja",
+            "edchat",
+            "iot",
+            "uzay",
+            "bilim",
+            "blogger",
+            "IB",
+            "creative",
+            "thinker",
+            "designer",
+            "robotic",
+            "STEM",
+            "STEAM",
+            "innovation",
+            "inventor",
+            "iPad",
+            "Apple",
+            "AppleEDU",
+            "codeorg",
+            "coding",
+            "VR",
+            "gamer"
+        ];
+        String.prototype.buyukle = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        String.prototype.hepsiniBuyukle = function() {
+            return this.replace(/(?:^|\s)\S/g, function(a) {
+                return a.toUpperCase();
+            });
+        }
+
+        function isaretleriniEksikEtme(seyler) {
+            return '#' + seyler;
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+          sudoldur();
+        });
+
+        var levellarlistesi=document.getElementById("levellar");
+        var oneklerlistesi=document.getElementById("onekler");
+        var rollerlistesi=document.getElementById("roller");
+
+        function sudoldur(){
+          //kod tekrarı yapacağım bana ne
+          level.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            levellarlistesi.appendChild(li);
+          });
+          levelEng.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            levellarlistesi.appendChild(li);
+          });
+          prefix.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            oneklerlistesi.appendChild(li);
+          });
+          prefixEng.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            oneklerlistesi.appendChild(li);
+          });
+          role.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            rollerlistesi.appendChild(li);
+          });
+          roleEng.forEach(function(e){
+            var li=document.createElement("li");
+            li.appendChild(document.createTextNode(e));
+            rollerlistesi.appendChild(li);
+          });
+        }
+        var cevapverdugmesi = document.getElementById("generatebtn");
+        var ingilizcelivercheck = document.getElementById("ingilizcelivercheck");
+        cevapverdugmesi.addEventListener("click", generate);
+
+        var Title = {
+            selectedLevel: "",
+            selectedPrefix: "",
+            selectedRole: "",
+            selectedHashtags: [],
+            titleToparla: function() {
+                return this.selectedLevel + " " + this.selectedPrefix + " " + Hal(this.selectedRole, "i");
+            }
+        }
+
+        function generate() {
+            var result = "";
+
+            if (ingilizcelivercheck.checked==true) {
+                console.log("ingilizceli verilecek belli");
+                karmaLevel=level.slice();
+                levelEng.forEach(function(e){
+                  karmaLevel.push(e);
+                });
+                Title.selectedLevel = karmaLevel[Math.floor(Math.random() * karmaLevel.length)];
+            } else {
+                Title.selectedLevel = level[Math.floor(Math.random() * level.length)];
+            }
+
+            Title.selectedPrefix = prefix[Math.floor(Math.random() * prefix.length)];
+            //var selectedRole = Hal(role[Math.floor(Math.random() * role.length)],"i");
+            Title.selectedRole = role[Math.floor(Math.random() * role.length)];
+            Title.selectedHashtags = [
+                hashtags[Math.floor(Math.random() * hashtags.length)],
+                hashtags[Math.floor(Math.random() * hashtags.length)],
+                hashtags[Math.floor(Math.random() * hashtags.length)],
+                hashtags[Math.floor(Math.random() * hashtags.length)]
+            ];
+
+            /*beautifyTags=selectedHashtags.map(isaretleriniEksikEtme);
+            beautifyTags=beautifyTags.replace(/,/g, ' ');*/
+            var sonuc = document.getElementById("sonuc");
+            sonuc.innerHTML =
+                Title.selectedLevel + " " +
+                Title.selectedPrefix + " " +
+                Hal(Title.selectedRole, "i") + " ";
+            Title.selectedHashtags.forEach(function(e) {
+                sonuc.innerHTML += "#" + e + " ";
+            });
+
+        }
+
+        var tivitledugmesi = document.getElementById("tivitle");
+        tivitledugmesi.addEventListener("click", tivitlenmesine);
+
+        function tivitlenmesine() {
+            var t = document.getElementById("sonuc").innerHTML;
+            window.open("http://twitter.com/share?via=cgural&text=" + Title.titleToparla() + "&hashtags=EDUtitleGenerator," + Title.selectedHashtags);
+        }
+
+        </script>
+        <script type="text/javascript">
+        /*
+        *
+        * Haller.js v2.1.0
+        * http://sercaneraslan.github.io/Haller.js/
+        *
+        * (c) 2013-2014 Sercan Eraslan http://sercaneraslan.com
+        * License: MIT
+        *
+        */
+        var Hal=function(g,d){var k="iyelik",a="i",h="e",b="de",l="den",i="ııiiuuüü",f=g[g.length-1],c=~~/[ei][^ıüoö]*[au]l$|alp$/.test(g)*2,j=g.match(/[aıeiouöü]/g).pop(),e=(d==k||d==a)?i["aıeiouöü".indexOf(j)+c]:(/[aıou]/.test(j))?c?"e":"a":"e";if(f==j){e=(d==k)?"n"+e:(d==a||d==h)?"y"+e:e}if(d==b||d==l){e=(/[fstkçşhp]/.test(f)?"t":"d")+e}if(d==k||d==l){e+="n"}return g+e};
+
+        </script>
     </div>
 </body>
 
