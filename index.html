@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>21th Centrury Title Generator for Educators </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <style type="text/css">
+    .aciklamalilist{
+      list-style:none;
+overflow: hidden;
+margin: 0 0 2em 0;
+padding: 0;
+    }
+    .aciklamalilist li{
+      float:left;
+      margin-right: 14px;
+      font-size: 16px;
+    }
+    div#sonuclar{
+    min-height: 6em;
+    border: 2px dashed #DDD;
+    border-radius: 8px;
+    margin:20px auto;
+    }
+    div#sonuclar h1{
+      line-height: 2em;
+      margin:10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="kimdir" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <h1 class="">21.YY. eğitimcileri için title generator</h1>
+<p class="lead">yine alanla ilgili özgün birkaç kelam aradığım bir andı. <a href="https://twitter.com/EgitimPedia">@egitimpedia</a>'nın
+  güzel yazıları arasında dolaşırken <a href="https://twitter.com/ataman_mujdat">@ataman_mujdat</a>'ın şu yazısına denk geldim:
+   <a href="http://www.egitimpedia.com/egitimpedia-yazari-mujdat-ataman-egitim-balonumuz/">Eğitim Balonumuz</a>.
+   özel okulların slogan seçiminde ellerini neden bu kadar korkak alıştırdıklarından bahsetmiş. yazar burada çok haklı.
+   ben de okullar adına üzüldüm tabi. sadece okullar adına mı? bizler, eğitimle içli dışlı meşgul olanlar adına da.
+sayıca da o kadar çokluyuz ki sonsuz title'lar generate ediyoruz.
+işte bu araç güzel bir araştırmanın ürünü. artık yorulmayın ve siz de güzel title'lardan bir tane seçin.</p>
+  <p class="lead">aracımızın okullusunu da düşünüyorum. okul sloganları konusunda ustaysanız yardımcı olmak için bana <a href="https://twitter.com/cgural">twitter</a>'dan yazabilirsiniz.</p>
+            </div>
+        </div>
+        <div id="dugmeler" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <p class="lead">Hangi title'ı seçeceğinize karar veremiyor musunuz? Vermeyin. Komputer üretsin. Kullanın gitsin <i class="fa fa-thumbs-o-up fa-3" aria-hidden="true"></i></p>
+                <button type="button" id="generatebtn" class="btn btn-success btn-lg">Komputer cevap ver</button>
+                <button type="button" id="tivitle" class="btn btn-info btn-lg">Tweetle</button>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+
+            </div>
+            <div class="checkbox col-xs-12 col-sm-12 col-md-12">
+                <label>
+                    <input id="ingilizcelivercheck" type="checkbox">İngilizceli karıştır
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div id="sonuclar" class="col-xs-12 col-sm-12 col-md-12">
+                <h1 id="sonuc" class="text-capitalize"></h1>
+            </div>
+        </div>
+        <div id="aciklama" class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <h4>Level'lar</h4>
+              <ul id="levellar" class="aciklamalilist">
+              </ul>
+              <h4>Ön ekler</h4>
+              <ul id="onekler" class="aciklamalilist"></ul>
+              <h4>Roller</h4>
+              <ul id="roller" class="aciklamalilist"></ul>
+          </div>
+        </div>
+        <div class="row" id="footer">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+          <p>aslında böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a>'dan gördüm. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. </p>
+        </div>
+        </div>
+        <script src="./titlegenerator.js" type="text/javascript"></script>
+        <script src="./haller.min.js" type="text/javascript"></script>
+    </div>
+</body>
+
+</html>
