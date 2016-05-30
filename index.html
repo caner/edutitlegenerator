@@ -26,7 +26,7 @@
             min-height: 6em;
             border: 2px dashed #DDD;
             border-radius: 8px;
-            margin: 20px auto;
+            margin: 20px 20px 60px 20px;
         }
 
         div#sonuclar h1 {
@@ -48,15 +48,12 @@
                 <button type="button" id="tivitle" class="btn btn-info btn-lg">Tweetle</button>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-
-            </div>
             <div class="checkbox col-xs-12 col-sm-12 col-md-12">
                 <label>
                     <input id="ingilizcelivercheck" type="checkbox" />İngilizceli karıştır
                 </label>
                 <label>
-                  <input id="hashtaglereklecheck" type="checkbox" checked="true"/>Hashtag'ler ekle
+                    <input id="hashtaglereklecheck" type="checkbox" checked="true" />Hashtag'ler ekle
                 </label>
             </div>
         </div>
@@ -78,9 +75,19 @@
         </div>
         <div class="row" id="footer">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <p>böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a> yapmıştı. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. bir de türkçe'de isimlere hal eklerini otomatik ekleten <a href="http://sercaneraslan.com/haller.js/">hallerjs</a>                    için <a href="https://twitter.com/sercan_eraslan">sercan eraslan</a>'a çok teşekkürler.</p>
+                <p>böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a> yapmıştı. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. bir de türkçe'de isimlere hal eklerini otomatik ekleten
+                    <a href="http://sercaneraslan.com/haller.js/">hallerjs</a> için <a href="https://twitter.com/sercan_eraslan">sercan eraslan</a>'a çok teşekkürler.</p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <a class="github-button" href="https://github.com/caner/edutitlegenerator" data-icon="octicon-eye" data-count-href="/caner/edutitlegenerator/watchers" data-count-api="/repos/caner/edutitlegenerator#subscribers_count" data-count-aria-label="# watchers on GitHub"
+                    aria-label="Watch caner/edutitlegenerator on GitHub">Watch</a>
+                <a class="github-button" href="https://github.com/caner/edutitlegenerator" data-icon="octicon-star" data-count-href="/caner/edutitlegenerator/stargazers" data-count-api="/repos/caner/edutitlegenerator#stargazers_count" data-count-aria-label="# stargazers on GitHub"
+                    aria-label="Star caner/edutitlegenerator on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/caner/edutitlegenerator/issues" data-icon="octicon-issue-opened" data-count-api="/repos/caner/edutitlegenerator#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue caner/edutitlegenerator on GitHub">Issue</a>
+
             </div>
         </div>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script type="text/javascript">
             var arrayLevelTR = [
                 "yeni nesil",
@@ -121,18 +128,18 @@
                 "1:1"
             ];
             var arrayPrefixEN = [
-              "STEM",
-              "STEAM",
-              "constructivist",
-              "maker",
-              "robotic",
-              "arduino",
-              "raspberry pi",
-              "edtech",
-              "ICT",
-              "scratch",
-              "IoT",
-              "coding",
+                "STEM",
+                "STEAM",
+                "constructivist",
+                "maker",
+                "robotic",
+                "arduino",
+                "raspberry pi",
+                "edtech",
+                "ICT",
+                "scratch",
+                "IoT",
+                "coding",
                 "project",
                 "ninja",
                 "college",
@@ -214,10 +221,10 @@
             var oneklerlistesi = document.getElementById("onekler");
             var rollerlistesi = document.getElementById("roller");
 
-/*
-* func sudoldur()
-* UI'daki listeleri oluşturur, yuzır'a açık eder
-*/
+            /*
+             * func sudoldur()
+             * UI'daki listeleri oluşturur, yuzır'a açık eder
+             */
             function sudoldur() {
                 //kod tekrarı yapacağım bana ne
                 arrayLevelTR.forEach(function(e) {
@@ -253,8 +260,8 @@
             }
             var cevapverdugmesi = document.getElementById("generatebtn");
             var ingilizcelivercheck = document.getElementById("ingilizcelivercheck");
-            var hashtaglereklecheck=document.getElementById("hashtaglereklecheck");
-            cevapverdugmesi.addEventListener("click", generate);
+            var hashtaglereklecheck = document.getElementById("hashtaglereklecheck");
+            cevapverdugmesi.addEventListener("click", generate, googleahaberver);
 
             var Title = {
                 selectedLevel: "",
@@ -267,61 +274,56 @@
             }
 
             function generate() {
-                var result = "";
+              var result = "";
 
-                if (ingilizcelivercheck.checked == true) {
-                  /*tempArrayLevel=arrayLevelTR.concat(arrayLevelEN);
-                  tempArrayPrefix=arrayPrefixTR.concat(arrayPrefixEN);
-                  tempArrayRole=arrayRoleTR.concat(arrayRoleEN);
-                    Title.selectedLevel = tempArrayLevel[Math.floor(Math.random() * tempArrayLevel.length)];
-                    Title.selectedPrefix = tempArrayPrefix[Math.floor(Math.random() * tempArrayPrefix.length)];
-                    Title.selectedRole = tempArrayRole[Math.floor(Math.random() * tempArrayRole.length)];*/
-
-                      Title.selectedLevel = arrayLevelEN[Math.floor(Math.random() * arrayLevelEN.length)];
-                      Title.selectedPrefix = arrayPrefixEN[Math.floor(Math.random() * arrayPrefixEN.length)];
-                      Title.selectedRole = arrayRoleEN[Math.floor(Math.random() * arrayRoleEN.length)];
-                } else {
-                    Title.selectedLevel = arrayLevelTR[Math.floor(Math.random() * arrayLevelTR.length)];
-                    Title.selectedPrefix = arrayPrefixTR[Math.floor(Math.random() * arrayPrefixTR.length)];
-                    Title.selectedRole = arrayRoleTR[Math.floor(Math.random() * arrayRoleTR.length)];
-                    Title.selectedRole = Hal(Title.selectedRole, "i");
-                }
-
-var sonuc = document.getElementById("sonuc");
-                if(hashtaglereklecheck.checked==true){
-                Title.selectedHashtags = [
-                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
-                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
-                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
-                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)]
-                ];
-                sonuc.innerHTML =
-                    Title.selectedLevel + " " +
-                    Title.selectedPrefix + " " +
-                    Title.selectedRole+ " ";
-                Title.selectedHashtags.forEach(function(e) {
-                    sonuc.innerHTML += "#" + e + " ";
-                });
-              }else{
-                Title.selectedHashtags=[];
-                sonuc.innerHTML =
-                    Title.selectedLevel + " " +
-                    Title.selectedPrefix + " " +
-                    Title.selectedRole+ " ";
+              if (ingilizcelivercheck.checked == true) {
+                Title.selectedLevel = arrayLevelEN[Math.floor(Math.random() * arrayLevelEN.length)];
+                Title.selectedPrefix = arrayPrefixEN[Math.floor(Math.random() * arrayPrefixEN.length)];
+                Title.selectedRole = arrayRoleEN[Math.floor(Math.random() * arrayRoleEN.length)];
+              } else {
+                Title.selectedLevel = arrayLevelTR[Math.floor(Math.random() * arrayLevelTR.length)];
+                Title.selectedPrefix = arrayPrefixTR[Math.floor(Math.random() * arrayPrefixTR.length)];
+                Title.selectedRole = arrayRoleTR[Math.floor(Math.random() * arrayRoleTR.length)];
+                Title.selectedRole = Hal(Title.selectedRole, "i");
               }
 
+              var sonuc = document.getElementById("sonuc");
+              if (hashtaglereklecheck.checked == true) {
+                Title.selectedHashtags = [
+                  arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                  arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                  arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                  arrayHastags[Math.floor(Math.random() * arrayHastags.length)]
+                ];
+                sonuc.innerHTML =
+                Title.selectedLevel + " " +
+                Title.selectedPrefix + " " +
+                Title.selectedRole + " ";
+                Title.selectedHashtags.forEach(function(e) {
+                  sonuc.innerHTML += "#" + e + " ";
+                });
+              } else {
+                Title.selectedHashtags = [];
+                sonuc.innerHTML =
+                Title.selectedLevel + " " +
+                Title.selectedPrefix + " " +
+                Title.selectedRole + " ";
+              }
+            }
 
-
-
-
+            function googleahaberver() {
+              ga('send', 'event', {
+                eventCategory: 'generate',
+                eventAction: 'click',
+              });
             }
 
             var tivitledugmesi = document.getElementById("tivitle");
             tivitledugmesi.addEventListener("click", tivitlenmesine);
 
             function tivitlenmesine() {
-                var t = document.getElementById("sonuc").innerHTML;
-                window.open("http://twitter.com/share?via=cgural&text=" + Title.titleToparla() + "&hashtags=EDUtitleGenerator," + Title.selectedHashtags);
+              var t = document.getElementById("sonuc").innerHTML;
+              window.open("http://twitter.com/share?via=cgural&text=" + Title.titleToparla() + "&hashtags=EDUtitleGenerator," + Title.selectedHashtags);
             }
         </script>
         <script type="text/javascript">
