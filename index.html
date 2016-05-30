@@ -9,27 +9,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <style type="text/css">
-    .aciklamalilist{
-      list-style:none;
-overflow: hidden;
-margin: 0 0 2em 0;
-padding: 0;
-    }
-    .aciklamalilist li{
-      float:left;
-      margin-right: 14px;
-      font-size: 16px;
-    }
-    div#sonuclar{
-    min-height: 6em;
-    border: 2px dashed #DDD;
-    border-radius: 8px;
-    margin:20px auto;
-    }
-    div#sonuclar h1{
-      line-height: 2em;
-      margin:10px;
-    }
+        .aciklamalilist {
+            list-style: none;
+            overflow: hidden;
+            margin: 0 0 2em 0;
+            padding: 0;
+        }
+
+        .aciklamalilist li {
+            float: left;
+            margin-right: 14px;
+            font-size: 16px;
+        }
+
+        div#sonuclar {
+            min-height: 6em;
+            border: 2px dashed #DDD;
+            border-radius: 8px;
+            margin: 20px auto;
+        }
+
+        div#sonuclar h1 {
+            line-height: 2em;
+            margin: 10px;
+        }
     </style>
 </head>
 
@@ -40,7 +43,7 @@ padding: 0;
 
                 <h1 class="">21.YY. eğitimcileri için title generator</h1>
 
-              <p class="lead">Hangi title'ı seçeceğinize karar veremiyor musunuz? Vermeyin. Komputer üretsin. Kullanın gitsin <i class="fa fa-thumbs-o-up fa-3" aria-hidden="true"></i></p>
+                <p class="lead">Hangi title'ı seçeceğinize karar veremiyor musunuz? Vermeyin. Komputer üretsin. Kullanın gitsin <i class="fa fa-thumbs-o-up fa-3" aria-hidden="true"></i></p>
                 <button type="button" id="generatebtn" class="btn btn-success btn-lg">Komputer cevap ver</button>
                 <button type="button" id="tivitle" class="btn btn-info btn-lg">Tweetle</button>
             </div>
@@ -50,7 +53,10 @@ padding: 0;
             </div>
             <div class="checkbox col-xs-12 col-sm-12 col-md-12">
                 <label>
-                    <input id="ingilizcelivercheck" type="checkbox">İngilizceli karıştır
+                    <input id="ingilizcelivercheck" type="checkbox" />İngilizceli karıştır
+                </label>
+                <label>
+                  <input id="hashtaglereklecheck" type="checkbox" checked="true"/>Hashtag'ler ekle
                 </label>
             </div>
         </div>
@@ -60,261 +66,313 @@ padding: 0;
             </div>
         </div>
         <div id="aciklama" class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <h4>Level'lar</h4>
-              <ul id="levellar" class="aciklamalilist">
-              </ul>
-              <h4>Ön ekler</h4>
-              <ul id="onekler" class="aciklamalilist"></ul>
-              <h4>Roller</h4>
-              <ul id="roller" class="aciklamalilist"></ul>
-          </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h4>Level'lar</h4>
+                <ul id="levellar" class="aciklamalilist">
+                </ul>
+                <h4>Ön ekler</h4>
+                <ul id="onekler" class="aciklamalilist"></ul>
+                <h4>Roller</h4>
+                <ul id="roller" class="aciklamalilist"></ul>
+            </div>
         </div>
         <div class="row" id="footer">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-          <p>böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a> yapmıştı. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. bir de isimlere hal eklerini otomatik ekleten <a href="http://sercaneraslan.com/haller.js/">hallerjs</a> için <a href="https://twitter.com/sercan_eraslan">sercan eraslan</a>'a çok teşekkürler.</p>
-        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <p>böyle bir aracı uzun zaman önce ilk <a href="http://twitter.com/aweyenberg">@aweyenberg</a> yapmıştı. bkz: <a href="http://www.aaronweyenberg.com/uxgenerator/">UX title generator</a>. bir de isimlere hal eklerini otomatik ekleten <a href="http://sercaneraslan.com/haller.js/">hallerjs</a>                    için <a href="https://twitter.com/sercan_eraslan">sercan eraslan</a>'a çok teşekkürler.</p>
+            </div>
         </div>
         <script type="text/javascript">
-        var level = [
-            "kıdemli",
-            "yeni nesil",
-            "adobe certified",
-            "google certified",
-            "uzman",
+            var level = [
+                "kıdemli",
+                "yeni nesil",
+                "adobe certified",
+                "google certified",
+                "uzman",
 
-            "okul müdürü"
-        ];
-        var levelEng = [
-            "newbie",
-            "new generation",
-            "intern",
-            "junior",
-            "senior",
-            "lead"
-        ];
-        var prefix = [
-            "STEM",
-            "STEAM",
-            "FeTeMM",
-            "bilişim",
-            "yapılandırmacı",
-            "çok yönlü zeka",
-            "maker",
-            "robotic",
-            "arduino",
-            "raspberry pi",
-            "maker",
-            "eğitimde teknoloji",
-            "ICT",
-            "BÖTE",
-            "sosyal medya",
-            "scratch",
-            "21YY",
-            "IoT",
-            "MEB'de öğretmen",
-            "kodlama",
-            "#1:1",
-
-        ];
-        var prefixEng = [
-            "project",
-            "ninja",
-                "college",
-            "dojo",
-            "curriculum",
-            "instructional",
-            "computer science",
-            "gamification",
-            "3d print",
-            "preschool",
-            "highschool"
-        ];
-        var role = [
-            "öğretmen",
-            "eğitmen",
-            "koç",
-            "teknolog",
-            "koordinatör",
-        ];
-        var roleEng = [
-            "instructor",
-            "developer",
-            "manager",
-            "designer",
-            "educator",
-            "trainer",
-            "coordinator",
-            "specialist"
-        ];
-        var hashtags = [
-            "edtech",
-            "edu",
-            "egt",
-            "maker",
-            "makers",
-            "3dprint",
-            "sertifika",
-            "FLL",
-            "ninja",
-            "edchat",
-            "iot",
-            "uzay",
-            "bilim",
-            "blogger",
-            "IB",
-            "creative",
-            "thinker",
-            "designer",
-            "robotic",
-            "STEM",
-            "STEAM",
-            "innovation",
-            "inventor",
-            "iPad",
-            "Apple",
-            "AppleEDU",
-            "codeorg",
-            "coding",
-            "VR",
-            "gamer"
-        ];
-        String.prototype.buyukle = function() {
-            return this.charAt(0).toUpperCase() + this.slice(1);
-        }
-        String.prototype.hepsiniBuyukle = function() {
-            return this.replace(/(?:^|\s)\S/g, function(a) {
-                return a.toUpperCase();
-            });
-        }
-
-        function isaretleriniEksikEtme(seyler) {
-            return '#' + seyler;
-        }
-        document.addEventListener('DOMContentLoaded', function(){
-          sudoldur();
-        });
-
-        var levellarlistesi=document.getElementById("levellar");
-        var oneklerlistesi=document.getElementById("onekler");
-        var rollerlistesi=document.getElementById("roller");
-
-        function sudoldur(){
-          //kod tekrarı yapacağım bana ne
-          level.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            levellarlistesi.appendChild(li);
-          });
-          levelEng.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            levellarlistesi.appendChild(li);
-          });
-          prefix.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            oneklerlistesi.appendChild(li);
-          });
-          prefixEng.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            oneklerlistesi.appendChild(li);
-          });
-          role.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            rollerlistesi.appendChild(li);
-          });
-          roleEng.forEach(function(e){
-            var li=document.createElement("li");
-            li.appendChild(document.createTextNode(e));
-            rollerlistesi.appendChild(li);
-          });
-        }
-        var cevapverdugmesi = document.getElementById("generatebtn");
-        var ingilizcelivercheck = document.getElementById("ingilizcelivercheck");
-        cevapverdugmesi.addEventListener("click", generate);
-
-        var Title = {
-            selectedLevel: "",
-            selectedPrefix: "",
-            selectedRole: "",
-            selectedHashtags: [],
-            titleToparla: function() {
-                return this.selectedLevel + " " + this.selectedPrefix + " " + Hal(this.selectedRole, "i");
-            }
-        }
-
-        function generate() {
-            var result = "";
-
-            if (ingilizcelivercheck.checked==true) {
-                console.log("ingilizceli verilecek belli");
-                karmaLevel=level.slice();
-                levelEng.forEach(function(e){
-                  karmaLevel.push(e);
-                });
-                Title.selectedLevel = karmaLevel[Math.floor(Math.random() * karmaLevel.length)];
-            } else {
-                Title.selectedLevel = level[Math.floor(Math.random() * level.length)];
-            }
-
-            Title.selectedPrefix = prefix[Math.floor(Math.random() * prefix.length)];
-            //var selectedRole = Hal(role[Math.floor(Math.random() * role.length)],"i");
-            Title.selectedRole = role[Math.floor(Math.random() * role.length)];
-            Title.selectedHashtags = [
-                hashtags[Math.floor(Math.random() * hashtags.length)],
-                hashtags[Math.floor(Math.random() * hashtags.length)],
-                hashtags[Math.floor(Math.random() * hashtags.length)],
-                hashtags[Math.floor(Math.random() * hashtags.length)]
+                "okul müdürü"
             ];
+            var levelEng = [
+                "newbie",
+                "new generation",
+                "intern",
+                "junior",
+                "senior",
+                "lead"
+            ];
+            var prefix = [
+                "STEM",
+                "STEAM",
+                "FeTeMM",
+                "bilişim",
+                "yapılandırmacı",
+                "çok yönlü zeka",
+                "maker",
+                "robotic",
+                "arduino",
+                "raspberry pi",
+                "maker",
+                "eğitimde teknoloji",
+                "ICT",
+                "BÖTE",
+                "sosyal medya",
+                "scratch",
+                "21YY",
+                "IoT",
+                "MEB'de öğretmen",
+                "kodlama",
+                "#1:1",
 
-            /*beautifyTags=selectedHashtags.map(isaretleriniEksikEtme);
-            beautifyTags=beautifyTags.replace(/,/g, ' ');*/
-            var sonuc = document.getElementById("sonuc");
-            sonuc.innerHTML =
-                Title.selectedLevel + " " +
-                Title.selectedPrefix + " " +
-                Hal(Title.selectedRole, "i") + " ";
-            Title.selectedHashtags.forEach(function(e) {
-                sonuc.innerHTML += "#" + e + " ";
+            ];
+            var prefixEng = [
+                "project",
+                "ninja",
+                "college",
+                "dojo",
+                "curriculum",
+                "instructional",
+                "computer science",
+                "gamification",
+                "3d print",
+                "preschool",
+                "highschool"
+            ];
+            var role = [
+                "öğretmen",
+                "eğitmen",
+                "koç",
+                "teknolog",
+                "koordinatör",
+            ];
+            var roleEng = [
+                "instructor",
+                "developer",
+                "manager",
+                "designer",
+                "educator",
+                "trainer",
+                "coordinator",
+                "specialist"
+            ];
+            var hashtags = [
+                "edtech",
+                "edu",
+                "egt",
+                "maker",
+                "makers",
+                "3dprint",
+                "sertifika",
+                "FLL",
+                "ninja",
+                "edchat",
+                "iot",
+                "uzay",
+                "bilim",
+                "blogger",
+                "IB",
+                "creative",
+                "thinker",
+                "designer",
+                "robotic",
+                "STEM",
+                "STEAM",
+                "innovation",
+                "inventor",
+                "iPad",
+                "Apple",
+                "AppleEDU",
+                "codeorg",
+                "coding",
+                "VR",
+                "gamer"
+            ];
+            String.prototype.buyukle = function() {
+                return this.charAt(0).toUpperCase() + this.slice(1);
+            }
+            String.prototype.hepsiniBuyukle = function() {
+                return this.replace(/(?:^|\s)\S/g, function(a) {
+                    return a.toUpperCase();
+                });
+            }
+
+            function isaretleriniEksikEtme(seyler) {
+                return '#' + seyler;
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                sudoldur();
             });
 
-        }
+            var levellarlistesi = document.getElementById("levellar");
+            var oneklerlistesi = document.getElementById("onekler");
+            var rollerlistesi = document.getElementById("roller");
 
-        var tivitledugmesi = document.getElementById("tivitle");
-        tivitledugmesi.addEventListener("click", tivitlenmesine);
+            function sudoldur() {
+                //kod tekrarı yapacağım bana ne
+                level.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    levellarlistesi.appendChild(li);
+                });
+                levelEng.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    levellarlistesi.appendChild(li);
+                });
+                prefix.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    oneklerlistesi.appendChild(li);
+                });
+                prefixEng.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    oneklerlistesi.appendChild(li);
+                });
+                role.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    rollerlistesi.appendChild(li);
+                });
+                roleEng.forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(e));
+                    rollerlistesi.appendChild(li);
+                });
+            }
+            var cevapverdugmesi = document.getElementById("generatebtn");
+            var ingilizcelivercheck = document.getElementById("ingilizcelivercheck");
+            var hashtaglereklecheck=document.getElementById("hashtaglereklecheck");
+            cevapverdugmesi.addEventListener("click", generate);
 
-        function tivitlenmesine() {
-            var t = document.getElementById("sonuc").innerHTML;
-            window.open("http://twitter.com/share?via=cgural&text=" + Title.titleToparla() + "&hashtags=EDUtitleGenerator," + Title.selectedHashtags);
-        }
+            var Title = {
+                selectedLevel: "",
+                selectedPrefix: "",
+                selectedRole: "",
+                selectedHashtags: [],
+                titleToparla: function() {
+                    return this.selectedLevel + " " + this.selectedPrefix + " " + Hal(this.selectedRole, "i");
+                }
+            }
 
+            function generate() {
+                var result = "";
+
+                if (ingilizcelivercheck.checked == true) {
+                    karmaLevel = level.slice();
+                    levelEng.forEach(function(e) {
+                        karmaLevel.push(e);
+                    });
+                    Title.selectedLevel = karmaLevel[Math.floor(Math.random() * karmaLevel.length)];
+                } else {
+                    Title.selectedLevel = level[Math.floor(Math.random() * level.length)];
+                }
+
+                if (ingilizcelivercheck.checked == true){
+                  karmaPrefix=prefix.slice();
+                  prefixEng.forEach(function(e){
+                    karmaPrefix.push(e);
+                  });
+                  Title.selectedPrefix=karmaPrefix[Math.floor(Math.random() * karmaPrefix.length)];
+                }else{
+                Title.selectedPrefix = prefix[Math.floor(Math.random() * prefix.length)];
+              }
+                if(ingilizcelivercheck.checked==true){
+                  karmaRole=role.slice();
+                  roleEng.forEach(function(e){
+                    karmaRole.push(e);
+                  });
+                  Title.selectedRole=karmaRole[Math.floor(Math.random() * karmaRole.length)];
+                }else{
+                Title.selectedRole = role[Math.floor(Math.random() * role.length)];
+              }
+
+                if(hashtaglereklecheck.checked==true){
+                Title.selectedHashtags = [
+                    hashtags[Math.floor(Math.random() * hashtags.length)],
+                    hashtags[Math.floor(Math.random() * hashtags.length)],
+                    hashtags[Math.floor(Math.random() * hashtags.length)],
+                    hashtags[Math.floor(Math.random() * hashtags.length)]
+                ];
+              }else{
+                Title.selectedHashtags=[];
+              }
+
+                /*beautifyTags=selectedHashtags.map(isaretleriniEksikEtme);
+                beautifyTags=beautifyTags.replace(/,/g, ' ');*/
+                var sonuc = document.getElementById("sonuc");
+                if(hashtaglereklecheck.checked==true){
+                sonuc.innerHTML =
+                    Title.selectedLevel + " " +
+                    Title.selectedPrefix + " " +
+                    Hal(Title.selectedRole, "i") + " ";
+                Title.selectedHashtags.forEach(function(e) {
+                    sonuc.innerHTML += "#" + e + " ";
+                });
+              }else{
+                sonuc.innerHTML =
+                    Title.selectedLevel + " " +
+                    Title.selectedPrefix + " " +
+                    Hal(Title.selectedRole, "i") + " ";
+              }
+
+            }
+
+            var tivitledugmesi = document.getElementById("tivitle");
+            tivitledugmesi.addEventListener("click", tivitlenmesine);
+
+            function tivitlenmesine() {
+                var t = document.getElementById("sonuc").innerHTML;
+                window.open("http://twitter.com/share?via=cgural&text=" + Title.titleToparla() + "&hashtags=EDUtitleGenerator," + Title.selectedHashtags);
+            }
         </script>
         <script type="text/javascript">
-        /*
-        *
-        * Haller.js v2.1.0
-        * http://sercaneraslan.github.io/Haller.js/
-        *
-        * (c) 2013-2014 Sercan Eraslan http://sercaneraslan.com
-        * License: MIT
-        *
-        */
-        var Hal=function(g,d){var k="iyelik",a="i",h="e",b="de",l="den",i="ııiiuuüü",f=g[g.length-1],c=~~/[ei][^ıüoö]*[au]l$|alp$/.test(g)*2,j=g.match(/[aıeiouöü]/g).pop(),e=(d==k||d==a)?i["aıeiouöü".indexOf(j)+c]:(/[aıou]/.test(j))?c?"e":"a":"e";if(f==j){e=(d==k)?"n"+e:(d==a||d==h)?"y"+e:e}if(d==b||d==l){e=(/[fstkçşhp]/.test(f)?"t":"d")+e}if(d==k||d==l){e+="n"}return g+e};
-
+            /*
+             *
+             * Haller.js v2.1.0
+             * http://sercaneraslan.github.io/Haller.js/
+             *
+             * (c) 2013-2014 Sercan Eraslan http://sercaneraslan.com
+             * License: MIT
+             *
+             */
+            var Hal = function(g, d) {
+                var k = "iyelik",
+                    a = "i",
+                    h = "e",
+                    b = "de",
+                    l = "den",
+                    i = "ııiiuuüü",
+                    f = g[g.length - 1],
+                    c = ~~/[ei][^ıüoö]*[au]l$|alp$/.test(g) * 2,
+                    j = g.match(/[aıeiouöü]/g).pop(),
+                    e = (d == k || d == a) ? i["aıeiouöü".indexOf(j) + c] : (/[aıou]/.test(j)) ? c ? "e" : "a" : "e";
+                if (f == j) {
+                    e = (d == k) ? "n" + e : (d == a || d == h) ? "y" + e : e
+                }
+                if (d == b || d == l) {
+                    e = (/[fstkçşhp]/.test(f) ? "t" : "d") + e
+                }
+                if (d == k || d == l) {
+                    e += "n"
+                }
+                return g + e
+            };
         </script>
         <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-56228418-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
+            ga('create', 'UA-56228418-2', 'auto');
+            ga('send', 'pageview');
+        </script>
     </div>
 </body>
 
