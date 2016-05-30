@@ -82,16 +82,15 @@
             </div>
         </div>
         <script type="text/javascript">
-            var level = [
-                "kıdemli",
+            var arrayLevelTR = [
                 "yeni nesil",
+                "taze",
                 "adobe certified",
                 "google certified",
                 "uzman",
-
-                "okul müdürü"
+                "kıdemli"
             ];
-            var levelEng = [
+            var arrayLevelEN = [
                 "newbie",
                 "new generation",
                 "intern",
@@ -99,7 +98,7 @@
                 "senior",
                 "lead"
             ];
-            var prefix = [
+            var arrayPrefixTR = [
                 "STEM",
                 "STEAM",
                 "FeTeMM",
@@ -107,12 +106,11 @@
                 "yapılandırmacı",
                 "çok yönlü zeka",
                 "maker",
-                "robotic",
+                "robotik",
                 "arduino",
                 "raspberry pi",
                 "maker",
                 "eğitimde teknoloji",
-                "ICT",
                 "BÖTE",
                 "sosyal medya",
                 "scratch",
@@ -120,10 +118,21 @@
                 "IoT",
                 "MEB'de öğretmen",
                 "kodlama",
-                "#1:1",
-
+                "1:1"
             ];
-            var prefixEng = [
+            var arrayPrefixEN = [
+              "STEM",
+              "STEAM",
+              "constructivist",
+              "maker",
+              "robotic",
+              "arduino",
+              "raspberry pi",
+              "edtech",
+              "ICT",
+              "scratch",
+              "IoT",
+              "coding",
                 "project",
                 "ninja",
                 "college",
@@ -136,14 +145,14 @@
                 "preschool",
                 "highschool"
             ];
-            var role = [
+            var arrayRoleTR = [
                 "öğretmen",
                 "eğitmen",
                 "koç",
                 "teknolog",
                 "koordinatör",
             ];
-            var roleEng = [
+            var arrayRoleEN = [
                 "instructor",
                 "developer",
                 "manager",
@@ -153,7 +162,7 @@
                 "coordinator",
                 "specialist"
             ];
-            var hashtags = [
+            var arrayHastags = [
                 "edtech",
                 "edu",
                 "egt",
@@ -205,34 +214,38 @@
             var oneklerlistesi = document.getElementById("onekler");
             var rollerlistesi = document.getElementById("roller");
 
+/*
+* func sudoldur()
+* UI'daki listeleri oluşturur, yuzır'a açık eder
+*/
             function sudoldur() {
                 //kod tekrarı yapacağım bana ne
-                level.forEach(function(e) {
+                arrayLevelTR.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     levellarlistesi.appendChild(li);
                 });
-                levelEng.forEach(function(e) {
+                arrayLevelEN.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     levellarlistesi.appendChild(li);
                 });
-                prefix.forEach(function(e) {
+                arrayPrefixTR.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     oneklerlistesi.appendChild(li);
                 });
-                prefixEng.forEach(function(e) {
+                arrayPrefixEN.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     oneklerlistesi.appendChild(li);
                 });
-                role.forEach(function(e) {
+                arrayRoleTR.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     rollerlistesi.appendChild(li);
                 });
-                roleEng.forEach(function(e) {
+                arrayRoleEN.forEach(function(e) {
                     var li = document.createElement("li");
                     li.appendChild(document.createTextNode(e));
                     rollerlistesi.appendChild(li);
@@ -257,62 +270,49 @@
                 var result = "";
 
                 if (ingilizcelivercheck.checked == true) {
-                    karmaLevel = level.slice();
-                    levelEng.forEach(function(e) {
-                        karmaLevel.push(e);
-                    });
-                    Title.selectedLevel = karmaLevel[Math.floor(Math.random() * karmaLevel.length)];
+                  /*tempArrayLevel=arrayLevelTR.concat(arrayLevelEN);
+                  tempArrayPrefix=arrayPrefixTR.concat(arrayPrefixEN);
+                  tempArrayRole=arrayRoleTR.concat(arrayRoleEN);
+                    Title.selectedLevel = tempArrayLevel[Math.floor(Math.random() * tempArrayLevel.length)];
+                    Title.selectedPrefix = tempArrayPrefix[Math.floor(Math.random() * tempArrayPrefix.length)];
+                    Title.selectedRole = tempArrayRole[Math.floor(Math.random() * tempArrayRole.length)];*/
+
+                      Title.selectedLevel = arrayLevelEN[Math.floor(Math.random() * arrayLevelEN.length)];
+                      Title.selectedPrefix = arrayPrefixEN[Math.floor(Math.random() * arrayPrefixEN.length)];
+                      Title.selectedRole = arrayRoleEN[Math.floor(Math.random() * arrayRoleEN.length)];
                 } else {
-                    Title.selectedLevel = level[Math.floor(Math.random() * level.length)];
+                    Title.selectedLevel = arrayLevelTR[Math.floor(Math.random() * arrayLevelTR.length)];
+                    Title.selectedPrefix = arrayPrefixTR[Math.floor(Math.random() * arrayPrefixTR.length)];
+                    Title.selectedRole = arrayRoleTR[Math.floor(Math.random() * arrayRoleTR.length)];
+                    Title.selectedRole = Hal(Title.selectedRole, "i");
                 }
 
-                if (ingilizcelivercheck.checked == true){
-                  karmaPrefix=prefix.slice();
-                  prefixEng.forEach(function(e){
-                    karmaPrefix.push(e);
-                  });
-                  Title.selectedPrefix=karmaPrefix[Math.floor(Math.random() * karmaPrefix.length)];
-                }else{
-                Title.selectedPrefix = prefix[Math.floor(Math.random() * prefix.length)];
-              }
-                if(ingilizcelivercheck.checked==true){
-                  karmaRole=role.slice();
-                  roleEng.forEach(function(e){
-                    karmaRole.push(e);
-                  });
-                  Title.selectedRole=karmaRole[Math.floor(Math.random() * karmaRole.length)];
-                }else{
-                Title.selectedRole = role[Math.floor(Math.random() * role.length)];
-              }
-
+var sonuc = document.getElementById("sonuc");
                 if(hashtaglereklecheck.checked==true){
                 Title.selectedHashtags = [
-                    hashtags[Math.floor(Math.random() * hashtags.length)],
-                    hashtags[Math.floor(Math.random() * hashtags.length)],
-                    hashtags[Math.floor(Math.random() * hashtags.length)],
-                    hashtags[Math.floor(Math.random() * hashtags.length)]
+                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)],
+                    arrayHastags[Math.floor(Math.random() * arrayHastags.length)]
                 ];
-              }else{
-                Title.selectedHashtags=[];
-              }
-
-                /*beautifyTags=selectedHashtags.map(isaretleriniEksikEtme);
-                beautifyTags=beautifyTags.replace(/,/g, ' ');*/
-                var sonuc = document.getElementById("sonuc");
-                if(hashtaglereklecheck.checked==true){
                 sonuc.innerHTML =
                     Title.selectedLevel + " " +
                     Title.selectedPrefix + " " +
-                    Hal(Title.selectedRole, "i") + " ";
+                    Title.selectedRole+ " ";
                 Title.selectedHashtags.forEach(function(e) {
                     sonuc.innerHTML += "#" + e + " ";
                 });
               }else{
+                Title.selectedHashtags=[];
                 sonuc.innerHTML =
                     Title.selectedLevel + " " +
                     Title.selectedPrefix + " " +
-                    Hal(Title.selectedRole, "i") + " ";
+                    Title.selectedRole+ " ";
               }
+
+
+
+
 
             }
 
