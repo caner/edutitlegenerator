@@ -261,7 +261,10 @@
             var cevapverdugmesi = document.getElementById("generatebtn");
             var ingilizcelivercheck = document.getElementById("ingilizcelivercheck");
             var hashtaglereklecheck = document.getElementById("hashtaglereklecheck");
-            cevapverdugmesi.addEventListener("click", generate, googleahaberver);
+            cevapverdugmesi.addEventListener("click", function(){
+              generate(); //title generate et
+              googleahaberver(); //bu işlemi analiz için google'a gönder
+            });
 
             var Title = {
                 selectedLevel: "",
@@ -270,7 +273,8 @@
                 selectedHashtags: [],
                 titleToparla: function() {
                     return this.selectedLevel + " " + this.selectedPrefix + " " + Hal(this.selectedRole, "i");
-                }
+                },
+                lang:"TR"
             }
 
             function generate() {
@@ -280,11 +284,13 @@
                 Title.selectedLevel = arrayLevelEN[Math.floor(Math.random() * arrayLevelEN.length)];
                 Title.selectedPrefix = arrayPrefixEN[Math.floor(Math.random() * arrayPrefixEN.length)];
                 Title.selectedRole = arrayRoleEN[Math.floor(Math.random() * arrayRoleEN.length)];
+                Title.lang="EN";
               } else {
                 Title.selectedLevel = arrayLevelTR[Math.floor(Math.random() * arrayLevelTR.length)];
                 Title.selectedPrefix = arrayPrefixTR[Math.floor(Math.random() * arrayPrefixTR.length)];
                 Title.selectedRole = arrayRoleTR[Math.floor(Math.random() * arrayRoleTR.length)];
                 Title.selectedRole = Hal(Title.selectedRole, "i");
+                Title.lang="TR";
               }
 
               var sonuc = document.getElementById("sonuc");
@@ -314,6 +320,7 @@
             function googleahaberver() {
               ga('send', 'event', {
                 eventCategory: 'generate',
+                eventLabel: Title.lang,
                 eventAction: 'click',
               });
             }
